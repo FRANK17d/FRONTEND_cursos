@@ -32,8 +32,9 @@ const FormCategoria = () => {
         nombre: response.data.nombre,
         descripcion: response.data.descripcion
       });
-      if (response.data.imagen) {
-        setImagenActual(response.data.imagen);
+      // Usar imagen_url para mostrar la imagen actual
+      if (response.data.imagen_url) {
+        setImagenActual(response.data.imagen_url);
       }
       setError(null);
     } catch (err) {

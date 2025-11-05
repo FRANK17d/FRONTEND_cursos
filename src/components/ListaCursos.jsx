@@ -165,10 +165,10 @@ const ListaCursos = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cursos.map((curso) => (
             <div key={curso.id} className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-green-400 transition-all hover-lift shadow-lg flex flex-col">
-              {curso.imagen && (
+              {curso.imagen_url && (
                 <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-green-100 to-emerald-100">
                   <img 
-                    src={curso.imagen} 
+                    src={curso.imagen_url} 
                     alt={curso.nombre}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />

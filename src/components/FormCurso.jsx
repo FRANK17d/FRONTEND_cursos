@@ -56,8 +56,9 @@ const FormCurso = () => {
         categoria: curso.categoria || '',
         activo: curso.activo !== undefined ? curso.activo : true
       });
-      if (curso.imagen) {
-        setImagenActual(curso.imagen);
+      // Usar imagen_url para mostrar la imagen actual
+      if (curso.imagen_url) {
+        setImagenActual(curso.imagen_url);
       }
       setError(null);
     } catch (err) {

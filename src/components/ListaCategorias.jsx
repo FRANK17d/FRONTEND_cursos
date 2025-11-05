@@ -89,10 +89,10 @@ const ListaCategorias = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categorias.map((categoria) => (
             <div key={categoria.id} className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-sky-400 transition-all hover-lift shadow-lg">
-              {categoria.imagen && (
+              {categoria.imagen_url && (
                 <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100">
                   <img 
-                    src={categoria.imagen} 
+                    src={categoria.imagen_url} 
                     alt={categoria.nombre}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
