@@ -64,33 +64,33 @@ const ListaCategorias = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+    <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-gray-800 mb-2">Categorías</h1>
-          <p className="text-gray-600">Gestiona todas las categorías de tus cursos</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-2">Categorías</h1>
+          <p className="text-sm sm:text-base text-gray-600">Gestiona todas las categorías de tus cursos</p>
         </div>
         <Link 
           to="/categorias/nueva" 
-          className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center gap-2 hover:scale-105"
+          className="w-full sm:w-auto bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold py-3 px-6 sm:px-8 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 hover:scale-105 text-sm sm:text-base"
         >
-          <span className="text-2xl">+</span>
+          <span className="text-xl sm:text-2xl">+</span>
           Nueva Categoría
         </Link>
       </div>
 
       {categorias.length === 0 ? (
-        <div className="bg-white shadow-xl border-2 border-gray-200 text-gray-600 px-6 py-16 rounded-2xl text-center">
-          <div className="text-7xl mb-4">📁</div>
-          <p className="text-2xl font-bold text-gray-800 mb-2">No hay categorías registradas</p>
-          <p className="text-gray-500">Crea tu primera categoría para empezar</p>
+        <div className="bg-white shadow-xl border-2 border-gray-200 text-gray-600 px-4 sm:px-6 py-12 sm:py-16 rounded-2xl text-center">
+          <div className="text-5xl sm:text-7xl mb-4">📁</div>
+          <p className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">No hay categorías registradas</p>
+          <p className="text-sm sm:text-base text-gray-500">Crea tu primera categoría para empezar</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {categorias.map((categoria) => (
-            <div key={categoria.id} className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-sky-400 transition-all hover-lift shadow-lg">
+            <div key={categoria.id} className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-sky-400 transition-all hover-lift shadow-lg">
               {categoria.imagen_url && (
-                <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100">
+                <div className="w-full h-40 sm:h-48 overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100">
                   <img 
                     src={categoria.imagen_url} 
                     alt={categoria.nombre}
@@ -98,27 +98,27 @@ const ListaCategorias = () => {
                   />
                 </div>
               )}
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-sky-600 transition-colors">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 group-hover:text-sky-600 transition-colors">
                   {categoria.nombre}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p className="text-sm sm:text-base text-gray-600 mb-4 line-clamp-2">
                   {categoria.descripcion}
                 </p>
-                <div className="flex justify-between items-center pt-4 border-t-2 border-gray-100">
-                  <span className="text-sm text-gray-500 font-medium">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-4 border-t-2 border-gray-100 gap-3 sm:gap-0">
+                  <span className="text-xs sm:text-sm text-gray-500 font-medium">
                     ID: {categoria.id}
                   </span>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full sm:w-auto">
                     <Link 
                       to={`/categorias/editar/${categoria.id}`} 
-                      className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow-md hover:shadow-lg"
+                      className="flex-1 sm:flex-none bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-all shadow-md hover:shadow-lg text-center"
                     >
                       Editar
                     </Link>
                     <button
                       onClick={() => handleDelete(categoria.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow-md hover:shadow-lg"
+                      className="flex-1 sm:flex-none bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-all shadow-md hover:shadow-lg"
                     >
                       Eliminar
                     </button>

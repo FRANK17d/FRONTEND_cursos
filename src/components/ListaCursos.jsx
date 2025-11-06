@@ -119,32 +119,32 @@ const ListaCursos = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+    <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-gray-800 mb-2">Cursos</h1>
-          <p className="text-gray-600">Administra todos tus cursos disponibles</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-2">Cursos</h1>
+          <p className="text-sm sm:text-base text-gray-600">Administra todos tus cursos disponibles</p>
         </div>
         <Link 
           to="/cursos/nuevo" 
-          className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-8 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center gap-2 hover:scale-105"
+          className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-6 sm:px-8 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 hover:scale-105 text-sm sm:text-base"
         >
-          <span className="text-2xl">+</span>
+          <span className="text-xl sm:text-2xl">+</span>
           Nuevo Curso
         </Link>
       </div>
 
       {/* Filtro por categoría */}
-      <div className="mb-8 bg-white shadow-lg border-2 border-gray-200 rounded-2xl p-6">
+      <div className="mb-6 sm:mb-8 bg-white shadow-lg border-2 border-gray-200 rounded-xl sm:rounded-2xl p-4 sm:p-6">
         <label htmlFor="filtro" className="block text-gray-800 text-sm font-bold mb-3 flex items-center gap-2">
-          <span className="text-xl">🔍</span>
+          <span className="text-lg sm:text-xl">🔍</span>
           Filtrar por categoría:
         </label>
         <select
           id="filtro"
           value={filtroCategoria}
           onChange={(e) => handleFiltroCategoria(e.target.value)}
-          className="w-full md:w-64 bg-gray-50 border-2 border-gray-300 rounded-xl py-3 px-4 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+          className="w-full sm:w-64 bg-gray-50 border-2 border-gray-300 rounded-lg sm:rounded-xl py-2.5 sm:py-3 px-3 sm:px-4 text-sm sm:text-base text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
         >
           <option value="">Todas las categorías</option>
           {categorias.map((categoria) => (
@@ -156,17 +156,17 @@ const ListaCursos = () => {
       </div>
 
       {cursos.length === 0 ? (
-        <div className="bg-white shadow-xl border-2 border-gray-200 text-gray-600 px-6 py-16 rounded-2xl text-center">
-          <div className="text-7xl mb-4">📚</div>
-          <p className="text-2xl font-bold text-gray-800 mb-2">No hay cursos registrados</p>
-          <p className="text-gray-500">Crea tu primer curso para empezar</p>
+        <div className="bg-white shadow-xl border-2 border-gray-200 text-gray-600 px-4 sm:px-6 py-12 sm:py-16 rounded-2xl text-center">
+          <div className="text-5xl sm:text-7xl mb-4">📚</div>
+          <p className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">No hay cursos registrados</p>
+          <p className="text-sm sm:text-base text-gray-500">Crea tu primer curso para empezar</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {cursos.map((curso) => (
-            <div key={curso.id} className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-green-400 transition-all hover-lift shadow-lg flex flex-col">
+            <div key={curso.id} className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-green-400 transition-all hover-lift shadow-lg flex flex-col">
               {curso.imagen_url && (
-                <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-green-100 to-emerald-100">
+                <div className="w-full h-40 sm:h-48 overflow-hidden bg-gradient-to-br from-green-100 to-emerald-100">
                   <img 
                     src={curso.imagen_url} 
                     alt={curso.nombre}
@@ -174,18 +174,18 @@ const ListaCursos = () => {
                   />
                 </div>
               )}
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors flex-1">
+              <div className="p-4 sm:p-6 flex flex-col flex-1">
+                <div className="flex justify-between items-start mb-3 gap-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors flex-1 line-clamp-2">
                     {curso.nombre}
                   </h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ml-2 ${getNivelColor(curso.nivel)}`}>
+                  <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ${getNivelColor(curso.nivel)}`}>
                     {getNivelLabel(curso.nivel)}
                   </span>
                 </div>
                 
                 {curso.descripcion && (
-                  <p className="text-gray-600 mb-4 text-sm line-clamp-2">
+                  <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm line-clamp-2">
                     {curso.descripcion.length > 100 
                       ? `${curso.descripcion.substring(0, 100)}...` 
                       : curso.descripcion}
@@ -193,25 +193,25 @@ const ListaCursos = () => {
                 )}
                 
                 <div className="space-y-2 mb-4 flex-1">
-                  <div className="flex justify-between text-sm bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  <div className="flex justify-between text-xs sm:text-sm bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
                     <span className="text-gray-600 font-medium">👨‍🏫 Instructor:</span>
-                    <span className="text-gray-800 font-semibold">{curso.instructor}</span>
+                    <span className="text-gray-800 font-semibold truncate ml-2">{curso.instructor}</span>
                   </div>
-                  <div className="flex justify-between text-sm bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  <div className="flex justify-between text-xs sm:text-sm bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
                     <span className="text-gray-600 font-medium">⏱️ Duración:</span>
                     <span className="text-gray-800 font-semibold">{curso.duracion} horas</span>
                   </div>
-                  <div className="flex justify-between text-sm bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border-2 border-green-200">
+                  <div className="flex justify-between text-xs sm:text-sm bg-gradient-to-r from-green-50 to-emerald-50 p-2 sm:p-3 rounded-lg border-2 border-green-200">
                     <span className="text-gray-600 font-medium">💰 Precio:</span>
-                    <span className="text-green-700 font-bold text-base">S/. {curso.precio}</span>
+                    <span className="text-green-700 font-bold text-sm sm:text-base">S/. {curso.precio}</span>
                   </div>
-                  <div className="flex justify-between text-sm bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  <div className="flex justify-between text-xs sm:text-sm bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
                     <span className="text-gray-600 font-medium">📁 Categoría:</span>
-                    <span className="text-sky-600 font-semibold">
+                    <span className="text-sky-600 font-semibold truncate ml-2">
                       {getNombreCategoria(curso.categoria)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  <div className="flex justify-between text-xs sm:text-sm bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
                     <span className="text-gray-600 font-medium">Estado:</span>
                     <span className={`font-bold ${curso.activo ? 'text-green-600' : 'text-red-600'}`}>
                       {curso.activo ? '✓ Activo' : '✗ Inactivo'}
@@ -219,17 +219,17 @@ const ListaCursos = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center pt-4 border-t-2 border-gray-100">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-4 border-t-2 border-gray-100 gap-3 sm:gap-0">
                   <span className="text-xs text-gray-500 font-medium">
                     ID: {curso.id}
                   </span>
-                  <div className="flex gap-2">
-                    <Link to={`/cursos/editar/${curso.id}`} className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow-md hover:shadow-lg">
+                  <div className="flex gap-2 w-full sm:w-auto">
+                    <Link to={`/cursos/editar/${curso.id}`} className="flex-1 sm:flex-none bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-all shadow-md hover:shadow-lg text-center">
                       Editar
                     </Link>
                     <button
                       onClick={() => handleDelete(curso.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow-md hover:shadow-lg"
+                      className="flex-1 sm:flex-none bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm transition-all shadow-md hover:shadow-lg"
                     >
                       Eliminar
                     </button>
